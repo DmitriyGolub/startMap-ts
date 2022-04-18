@@ -1246,7 +1246,7 @@ function newGalaxy(_n, xSize, zSize, armOffsetMax, filterType = false) {
 
         stars[i].x = starX * xSize;
 
-        if (filterType == 4) {
+        if (filterType === 4) {
             stars[i].y = (Math.random() * 3) - ((Math.random() * 3));
         }
         else {

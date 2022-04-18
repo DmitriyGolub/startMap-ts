@@ -8,6 +8,7 @@ declare module '*.woff';
 declare module '*.atlas';
 declare module '*.gltf';
 declare module '*.glb';
+declare module '*.obj';
 declare module '*.fbx';
 declare module '*.mtl';
 declare module '*.txt' {

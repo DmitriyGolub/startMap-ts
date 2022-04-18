@@ -15,6 +15,7 @@ export interface IAppConfig {
     option?: {},
 }
 
+
 const camera = new PerspectiveCamera(
     70,
     window.innerWidth / window.innerHeight,
