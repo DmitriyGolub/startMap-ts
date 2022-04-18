@@ -1,34 +1,85 @@
 const path = require('path');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+1
 module.exports = {
-  mode: 'development',
-  entry: './src/script.js',
-  
-  output: {
-    filename: 'game.bundle.js',
-    path: path.resolve(__dirname, 'build'),
-    publicPath: '/'
-  },
+    mode: 'development',
+    entry: './src/app.ts',
 
-  resolve: {
-    extensions: ['.js']
-  },
-
-  watchOptions: {
-    ignored: /node_modules/
-  },
-
-  devServer: {
-    contentBase: path.join(__dirname, 'build'),
-    compress: true,
-    port: 9184,
-    inline: true,
-    watchOptions: {
-      aggregateTimeout: 300,
-      poll: true,
-      ignored: /node_modules/
+    output: {
+        filename: 'game.bundle.js',
+        path: path.resolve(__dirname, 'build'),
+        publicPath: '/'
     },
-    overlay: true
-  },
+
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
+    },
+
+    module: {
+        rules: [
+            {
+                test: /\.tsx?$/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env'],
+                        plugins: ['@babel/plugin-transform-runtime'],
+                    },
+                },
+                exclude: /node_modules/,
+            },
+            {
+                test: /\.m?js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env'],
+                        plugins: ['@babel/plugin-transform-runtime'],
+                    },
+                },
+            },
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
+            {
+                test: /\.(jpe?g|png|ttf|eot|otf|svg|ico|woff(2)?)$/,
+                type: 'asset/resource',
+            },
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
+            },
+            {
+                test: /\.(atlas|glsl)$/,
+                type: 'asset/source',
+            },
+            {
+                test: /\.(obj|fbx|gltf|drc|mtl|glb)$/i,
+                type: 'asset/resource',
+            },
+        ],
+    },
+
+
+    watchOptions: {
+        ignored: /node_modules/
+    },
+
+
+    devServer: {
+        static: path.resolve(__dirname, 'build'),
+        hot: true,
+        open: true,
+    },
+
+    plugins: [
+        new HtmlWebpackPlugin({
+            // filename: 'build/index.html',
+            template: 'src/index.html',
+        }),
+    ]
 
 }
