@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23139ba1-832a-4d75-baa5-342a1b48e4d5" name="Default Changelist" comment="refactoring to .ts">
-      <change afterPath="$PROJECT_DIR$/galaxy/src/ts/Galaxy/enviroments/galaxy-plane.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/galaxy/src/ts/helpers/up-star-activity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/galaxy/src/ts/Galaxy/galaxy-one/shader/firstVertex.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/galaxy/src/ts/Galaxy/galaxy-one/shader/firtFragment.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/galaxy/src/ts/const/stars-count.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/galaxy/src/ts/helpers/v-shader-compil.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/galaxy/src/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/src/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/galaxy/src/ts/Galaxy/abstarct-galaxy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/src/ts/Galaxy/abstarct-galaxy.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/galaxy/src/ts/Galaxy/galaxy-app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/src/ts/Galaxy/galaxy-app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/galaxy/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/src/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/galaxy/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/galaxy/src/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/src/styles/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/galaxy/src/ts/Galaxy/galaxy-one/galaxy-one.ts" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/src/ts/Galaxy/galaxy-one/galaxy-one.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/galaxy/src/ts/asset-list/textures.ts" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/src/ts/asset-list/textures.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/galaxy/src/ts/configs/galaxy-config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/src/ts/configs/galaxy-config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/galaxy/src/types/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/src/types/types.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/galaxy/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/galaxy/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +103,7 @@
       <workItem from="1650123602018" duration="13716000" />
       <workItem from="1650284612869" duration="13988000" />
       <workItem from="1650318742735" duration="701000" />
-      <workItem from="1650893044767" duration="9597000" />
+      <workItem from="1650893044767" duration="14132000" />
     </task>
     <task id="LOCAL-00001" summary="refactoring to .ts">
       <created>1650269057852</created>
@@ -129,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650318774555</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="refactoring to .ts">
+      <created>1650902979147</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1650902979147</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

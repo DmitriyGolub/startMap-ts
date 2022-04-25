@@ -1,5 +1,17 @@
-body {
-  margin:0;
-  overflow:hidden;
+/*body {*/
+/*  margin:0;*/
+/*  overflow:hidden;*/
+/*  cursor: grab;*/
+/*}*/
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
+}
+
+html, body {
+  overflow: hidden;
   cursor: grab;
 }

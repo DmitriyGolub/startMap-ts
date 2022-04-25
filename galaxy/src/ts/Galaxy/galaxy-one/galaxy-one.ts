@@ -5,6 +5,9 @@ import {AbstarctGalaxy, IAbstractGalaxy} from "../abstarct-galaxy";
 import * as THREE from "three";
 import {globalConfig} from "../../configs/galaxy-config";
 import {upStarActivity} from "../../helpers/up-star-activity";
+import vShader from "./shader/firstVertex.glsl"
+import fShader from "./shader/firtFragment.glsl"
+import {rebuildShader} from "../../helpers/v-shader-compil";
 
 export class GalaxyOne extends Group implements Updatable {
     private windowSize = {x: window.innerWidth, y: window.innerHeight}
@@ -30,16 +33,13 @@ export class GalaxyOne extends Group implements Updatable {
         super()
         gameUpdateService.register(this)
         this.config.scene.add(this)
-
-
         this.addUniform()
-        this.addColor()
     }
 
     addColor() {
         for (let customColorStarID = 0; customColorStarID < 2200; customColorStarID++) {
             let star = this.allStars[Math.floor(Math.random() * this.allStars.length)]
-            this.customColorStars.push(new THREE.Vector4(star.x, star.y, star.z, Math.random() * 10));
+            this.customColorStars.push(new Vector4(star.x, star.y, star.z, Math.random() * 10));
         }
     }
 
@@ -51,6 +51,14 @@ export class GalaxyOne extends Group implements Updatable {
         let cameraPower = globalConfig.cameraRotationPower
 
         this.firstStars.setFromPoints(this.abstractStars.stars)
+
+        for (let i = 0; i < this.firstStars.getAttribute('position').array.length; i++) {
+            const newVec3 = new Vector3(this.firstStars.getAttribute('position').array[i * 3],
+                this.firstStars.getAttribute('position').array[i * 3 + 1],
+                this.firstStars.getAttribute('position').array[i * 3 + 2])
+            this.allStars.push(newVec3)
+        }
+        this.addColor()
 
         const uniforms = {
             size: {type: 'f', value: 2.5},
@@ -66,10 +74,12 @@ export class GalaxyOne extends Group implements Updatable {
             derivatives: true
         }
 
+        const vertexShader = rebuildShader(vShader, 'first')
+
 
         this.firstGalaxyMaterial = new ShaderMaterial({
-            vertexShader: document.getElementById('first_vShader')!.textContent!,
-            fragmentShader: document.getElementById('first_fShader')!.textContent!,
+            vertexShader: vertexShader,
+            fragmentShader: fShader,
             // @ts-ignore
             uniforms: uniforms,
             depthTest: false,
@@ -86,13 +96,7 @@ export class GalaxyOne extends Group implements Updatable {
         this.firstGalaxy.name = 'firstGalaxy'
         this.config.scene.add(this.firstGalaxy)
 
-        for (let i = 0; i < this.firstGalaxy.geometry.getAttribute('position').array.length; i++) {
-            const newVec3 = new Vector3(this.firstGalaxy.geometry.getAttribute('position').array[i * 3],
-                this.firstGalaxy.geometry.getAttribute('position').array[i * 3 + 1],
-                this.firstGalaxy.geometry.getAttribute('position').array[i * 3 + 2])
-            this.allStars.push(newVec3)
 
-        }
         for (let starID = 0; starID < 900; starID++) {
             //const star: Vector3 = this.firstGalaxy.geometry.attributes['position'].array[Math.floor(Math.random() * this.firstGalaxy.geometry.attributes['position'].array.length)];
             let star = this.allStars[Math.floor(Math.random() * this.allStars.length)]
@@ -108,4 +112,5 @@ export class GalaxyOne extends Group implements Updatable {
 
     update(clock?: number) {
     }
+
 }

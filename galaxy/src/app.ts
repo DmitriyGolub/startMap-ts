@@ -8,7 +8,7 @@ import {cameraConst} from "./ts/const/camera-consts";
 
 export interface IAppConfig {
     renderer: WebGLRenderer,
-    target: WebGLRenderTarget
+    target?: WebGLRenderTarget
     control: OrbitControls,
     camera: PerspectiveCamera,
     scene: Scene,
@@ -26,7 +26,7 @@ export class App {
     private scene = new Scene()
     private target = new WebGLRenderTarget(innerWidth, innerHeight)
     private renderer = new WebGLRenderer({
-        // canvas: getCanvas(),
+        canvas: getCanvas(),
         antialias: true,
     })
 
@@ -48,22 +48,25 @@ export class App {
         this.controlConfigure()
         this.addEventResize()
         //load Galaxy
-        new GalaxyApp(this.config as IAppConfig)
+        setTimeout(() => {
+            new GalaxyApp(this.config as IAppConfig)
+        }, 1500)
+
 
     }
 
     protected renderConfigure() {
         this.renderer.setSize(innerWidth, innerHeight);
-        this.renderer.getContext().getExtension('OES_standard_derivatives');
+        // this.renderer.getContext().getExtension('OES_standard_derivatives');
         this.renderer.setClearColor(0x0000000);
-        document.body.appendChild(this.renderer.domElement);
+        // document.body.appendChild(this.renderer.domElement);
     }
 
     protected cameraConfigure() {
         camera.position.set(-90, 120, 180);
     }
 
-    protected controlConfigure(){
+    protected controlConfigure() {
         const controls = this.control
         controls.enableDamping = true;
         controls.dampingFactor = 0.035;
@@ -72,8 +75,8 @@ export class App {
         controls.maxDistance = cameraConst.minDistance;
     }
 
-    addEventResize(){
-        window.addEventListener('resize',  () => {
+    addEventResize() {
+        window.addEventListener('resize', () => {
             camera.aspect = innerWidth / innerHeight;
             this.renderer.setSize(innerWidth, innerHeight);
             camera.updateProjectionMatrix();
