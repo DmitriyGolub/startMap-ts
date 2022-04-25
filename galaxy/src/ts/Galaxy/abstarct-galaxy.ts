@@ -1,17 +1,19 @@
+import {Vector3, Vector4} from "three";
+
 export class AbstarctGalaxy {
-    private stars = [] as any[]
+    public stars = [] as Vector3[]
     private numArms = 5
     private armSeparationDistance = 2 * Math.PI / 2
     private rotationFactor = 3.5
 
     constructor(private galaxyConfig: IAbstractGalaxy) {
-
         this.init()
     }
 
     init() {
         const config = this.galaxyConfig
         let randomOffsetXY: number
+
         if (config.filterType === 4) {
             randomOffsetXY = 0.2;
         } else {
@@ -36,8 +38,6 @@ export class AbstarctGalaxy {
             }
 
             this.calculating(distance, randomOffsetXY, i)
-
-
         }
 
 
@@ -70,9 +70,13 @@ export class AbstarctGalaxy {
         starY += randomOffsetY;
 
         // Now we can assign xy coords.
+        // @ts-ignore
         this.stars[i] = {
+            // @ts-ignore
             x: null,
+            // @ts-ignore
             y: null,
+            // @ts-ignore
             z: null,
             w: 24
         };
@@ -95,5 +99,5 @@ export interface IAbstractGalaxy {
     xSize: number,
     zSize: number,
     armOffsetMax: number,
-    filterType: number
+    filterType?: number
 }

@@ -18,6 +18,11 @@
     "typeRoots": [
       "node_modules/@types",
       "src/types"
+    ],
+    "lib": [
+      "es6",
+      "es5",
+      "dom"
     ]
   },
   "include": [

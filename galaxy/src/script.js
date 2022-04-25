@@ -1182,7 +1182,7 @@ function moveCameraTo(camera, startX, startY, startZ, endX, endY, endZ, maxFrame
 
 }
 
-function newGalaxy(_n, xSize, zSize, armOffsetMax, filterType = false) {
+function abstractGalaxy(_n, xSize, zSize, armOffsetMax, filterType = false) {
     var stars = [];
     const numArms = 5;
     const armSeparationDistance = 2 * Math.PI / numArms;
@@ -1387,7 +1387,7 @@ function setScene() {
     HTTPRequest.open("GET", "./assets/galaxyStructure.json", false);
 
     HTTPRequest.onload = function () {
-        firststars.vertices = newGalaxy(40, 20, 20, 0.7);
+        firststars.vertices = abstractGalaxy(40, 20, 20, 0.7);
     }
 
     HTTPRequest.send();
@@ -1448,7 +1448,7 @@ function setScene() {
     scene.add(firstgalaxy);
 
     secondstars = new THREE.Geometry();
-    secondstars.vertices = newGalaxy(2200, 145, 145, 0.3, 2);
+    secondstars.vertices = abstractGalaxy(2200, 145, 145, 0.3, 2);
 
     var secondgalaxyMaterial = new THREE.ShaderMaterial({
         vertexShader: document.getElementById('second_vShader').textContent,
@@ -1477,7 +1477,7 @@ function setScene() {
 
 
     var thirdstars = new THREE.Geometry();
-    thirdstars.vertices = newGalaxy(600, 150, 150, 0.4, 3);
+    thirdstars.vertices = abstractGalaxy(600, 150, 150, 0.4, 3);
 
     var thirdgalaxyMaterial = new THREE.ShaderMaterial({
         vertexShader: document.getElementById('third_vShader').textContent,
@@ -1505,7 +1505,7 @@ function setScene() {
     scene.add(thirdgalaxy);
 
 
-    dynamicStars = newGalaxy(550, 150, 150, 0.2, 4);
+    dynamicStars = abstractGalaxy(550, 150, 150, 0.2, 4);
 
     var fouthstars = new THREE.Geometry();
 

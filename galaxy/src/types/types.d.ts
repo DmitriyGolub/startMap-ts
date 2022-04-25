@@ -16,3 +16,4 @@ declare module '*.txt' {
     export default content;
 }
 declare module '*.glsl'
+declare module '*.webp'

@@ -4,9 +4,11 @@ export const globalConfig = {
     firstGalaxyPower: 0.4,
     secondGalaxyPower: 3.2,
     thirdGalaxyPower: 1.2,
-    fouthGalaxyPower: 0.9,
+    fourthGalaxyPower: 0.9,
     //stars
-    starsOutsideGalaxysPower: 2.0,
+    starsOutsideGalaxyPower: 2.0,
     //mobile
-    rickMobileCount: 0
+    rickMobileCount: 0,
+    //camera
+     cameraRotationPower: 1.0,
 }

@@ -1,13 +1,18 @@
 import {IAppConfig} from "../../app";
 import {GameUpdateService, Updatable} from "../../services/update-service";
 import {GalaxyOne} from "./galaxy-one/galaxy-one";
+import {GalaxyPlane} from "./enviroments/galaxy-plane";
 
 export class GalaxyApp implements Updatable {
+    //three settings
     private camera = this.config.camera
     private renderer = this.config.renderer
     private scene = this.config.scene
     private updateService = new GameUpdateService()
+    //galaxy settings
+    protected galaxyPlane = new GalaxyPlane(this.config)
     private galaxyOne = new GalaxyOne(this.config, this.updateService)
+
 
     constructor(private config: IAppConfig) {
         this.updateService.register(this)
