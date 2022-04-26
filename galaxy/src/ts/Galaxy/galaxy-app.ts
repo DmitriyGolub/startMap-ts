@@ -1,4 +1,4 @@
-import {IAppConfig} from "../../app";
+import {IAppConfig, sizes} from "../../app";
 import {GameUpdateService, Updatable} from "../../services/update-service";
 import {GalaxyOne} from "./galaxy-one/galaxy-one";
 import {GalaxyPlane} from "./enviroments/galaxy-plane";
@@ -10,19 +10,20 @@ export class GalaxyApp implements Updatable {
     private scene = this.config.scene
     private updateService = new GameUpdateService()
     //galaxy settings
-    protected galaxyPlane = new GalaxyPlane(this.config)
     private galaxyOne = new GalaxyOne(this.config, this.updateService)
+    protected galaxyPlane = new GalaxyPlane(this.config)
 
 
     constructor(private config: IAppConfig) {
         this.updateService.register(this)
     }
 
+
     update(clock?: number) {
         this.config.control.update()
         // @ts-ignore
         // let spDelta = this.config.control['sphericalDelta'] || {};
-       // this.renderer.autoClear = false;
+        this.renderer.autoClear = false;
         this.renderer.render(this.scene, this.camera);
     }
 }

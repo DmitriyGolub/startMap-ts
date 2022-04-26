@@ -15,7 +15,7 @@ export interface IAppConfig {
     option?: {},
 }
 
-let sizes = {
+export let sizes = {
     width: window.innerWidth,
     height: window.innerHeight
 }
@@ -32,8 +32,8 @@ export class App {
     private target = new WebGLRenderTarget(sizes.width, sizes.height)
     private renderer = new WebGLRenderer({
         canvas: getCanvas(),
-        // antialias: true,
-        // stencil: true
+        antialias: true,
+        stencil: true
     })
 
 
@@ -56,20 +56,16 @@ export class App {
     }
 
     resizer() {
-        console.log(sizes.width, sizes.height)
         this.renderer.setPixelRatio(2)
-        this.control.enableDamping = true
         this.renderer.setSize(sizes.width, sizes.height)
         this.renderer.setClearColor(0x000000);
         this.renderer.render(this.scene, camera)
-        camera.aspect = sizes.width / sizes.height
-        // document.body.appendChild(this.renderer.domElement)
-        //update camera
         window.addEventListener('resize', () => this.onWindowResize());
     }
 
     protected cameraConfigure() {
         camera.position.set(-90, 120, 180);
+        camera.updateProjectionMatrix()
     }
 
     protected controlConfigure() {
@@ -96,14 +92,13 @@ export class App {
 
     private initGame() {
         //assets callback
-        //TODO
-        //setTimeout(() => this.resizer(), 100)
-        this.resizer()
         //load Galaxy
         new GalaxyApp(this.config as IAppConfig)
+        //TODO
+        setTimeout(() => this.resizer(), 100)
     }
 }
 
 window.onload = () => {
-    const app = new App()
+    new App()
 }
