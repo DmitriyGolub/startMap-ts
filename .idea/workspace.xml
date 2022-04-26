@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="23139ba1-832a-4d75-baa5-342a1b48e4d5" name="Default Changelist" comment="refactoring to .ts">
-      <change afterPath="$PROJECT_DIR$/galaxy/src/ts/Galaxy/galaxy-one/shader/firstVertex.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/galaxy/src/ts/Galaxy/galaxy-one/shader/firtFragment.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/galaxy/src/ts/const/stars-count.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/galaxy/src/ts/helpers/v-shader-compil.ts" afterDir="false" />
+    <list default="true" id="23139ba1-832a-4d75-baa5-342a1b48e4d5" name="Default Changelist" comment="refactoring shader Compilation to .ts">
+      <change afterPath="$PROJECT_DIR$/galaxy/src/old-code/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/galaxy/src/ts/Galaxy/loaders/loading-manager.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/galaxy/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/src/app.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/galaxy/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/galaxy/src/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/src/styles/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/galaxy/src/ts/Galaxy/galaxy-one/galaxy-one.ts" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/src/ts/Galaxy/galaxy-one/galaxy-one.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/galaxy/src/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/src/old-code/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/galaxy/src/ts/Galaxy/enviroments/galaxy-plane.ts" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/src/ts/Galaxy/enviroments/galaxy-plane.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/galaxy/src/ts/Galaxy/galaxy-app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/src/ts/Galaxy/galaxy-app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/galaxy/src/ts/Galaxy/loaders/texture-loader.ts" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/src/ts/Galaxy/loaders/texture-loader.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/galaxy/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +38,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="/usr/local/bin/node" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/galaxy/src" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/galaxy/node_modules/typescript/lib" />
@@ -45,9 +46,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/galaxy/src" />
       <recent name="$PROJECT_DIR$/galaxy" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/galaxy/src/old-code" />
       <recent name="$PROJECT_DIR$/galaxy/src/ts/Galaxy/enviroments" />
       <recent name="$PROJECT_DIR$/galaxy/src" />
       <recent name="$PROJECT_DIR$/galaxy/src/assets/textures" />
@@ -103,7 +106,7 @@
       <workItem from="1650123602018" duration="13716000" />
       <workItem from="1650284612869" duration="13988000" />
       <workItem from="1650318742735" duration="701000" />
-      <workItem from="1650893044767" duration="14132000" />
+      <workItem from="1650893044767" duration="20005000" />
     </task>
     <task id="LOCAL-00001" summary="refactoring to .ts">
       <created>1650269057852</created>
@@ -133,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650902979147</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="refactoring shader Compilation to .ts">
+      <created>1650907476970</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1650907476970</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +168,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactoring to .ts" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring to .ts" />
+    <MESSAGE value="refactoring shader Compilation to .ts" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring shader Compilation to .ts" />
   </component>
 </project>

@@ -21,9 +21,8 @@ export class GalaxyApp implements Updatable {
     update(clock?: number) {
         this.config.control.update()
         // @ts-ignore
-        let spDelta = this.config.control['sphericalDelta'] || {};
-        this.renderer.autoClear = false;
+        // let spDelta = this.config.control['sphericalDelta'] || {};
+       // this.renderer.autoClear = false;
         this.renderer.render(this.scene, this.camera);
-
     }
 }

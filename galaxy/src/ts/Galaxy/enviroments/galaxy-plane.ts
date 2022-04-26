@@ -6,11 +6,17 @@ import {IAppConfig} from "../../../app";
 
 export class GalaxyPlane {
     private texture = textureLoader.load(DevTextureName.BC10, (texture) => {
-        this.addMesh(texture)
+        console.log('loading complete')
+       // this.addMesh(texture)
+    }, () => {
+        console.log('loading texure')
+    }, (err) => {
+        console.error('An error happened.');
     })
     private galaxyPlane: Mesh
 
     constructor(private config: IAppConfig) {
+        this.addMesh(this.texture)
     }
 
     private addMesh(texture: Texture) {

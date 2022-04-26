@@ -15,6 +15,11 @@ export interface IAppConfig {
     option?: {},
 }
 
+let sizes = {
+    width: window.innerWidth,
+    height: window.innerHeight
+}
+
 
 const camera = new PerspectiveCamera(
     70,
@@ -24,10 +29,11 @@ const camera = new PerspectiveCamera(
 
 export class App {
     private scene = new Scene()
-    private target = new WebGLRenderTarget(innerWidth, innerHeight)
+    private target = new WebGLRenderTarget(sizes.width, sizes.height)
     private renderer = new WebGLRenderer({
         canvas: getCanvas(),
-        antialias: true,
+        // antialias: true,
+        // stencil: true
     })
 
 
@@ -36,30 +42,30 @@ export class App {
     private config: IAppConfig = {
         renderer: this.renderer,
         control: this.control,
-        target: this.target,
+        //target: this.target,
         camera: camera,
         scene: this.scene,
     }
 
     constructor() {
+        setTimeout(() => window.scrollTo(0, 1), 10) //scroll fix
         //configure pre
-        this.renderConfigure()
         this.cameraConfigure()
         this.controlConfigure()
-        this.addEventResize()
-        //load Galaxy
-        setTimeout(() => {
-            new GalaxyApp(this.config as IAppConfig)
-        }, 1500)
-
-
+        this.initGame()
     }
 
-    protected renderConfigure() {
-        this.renderer.setSize(innerWidth, innerHeight);
-        // this.renderer.getContext().getExtension('OES_standard_derivatives');
-        this.renderer.setClearColor(0x0000000);
-        // document.body.appendChild(this.renderer.domElement);
+    resizer() {
+        console.log(sizes.width, sizes.height)
+        this.renderer.setPixelRatio(2)
+        this.control.enableDamping = true
+        this.renderer.setSize(sizes.width, sizes.height)
+        this.renderer.setClearColor(0x000000);
+        this.renderer.render(this.scene, camera)
+        camera.aspect = sizes.width / sizes.height
+        // document.body.appendChild(this.renderer.domElement)
+        //update camera
+        window.addEventListener('resize', () => this.onWindowResize());
     }
 
     protected cameraConfigure() {
@@ -73,16 +79,31 @@ export class App {
         controls.enablePan = false;
         controls.minDistance = cameraConst.minDistance;
         controls.maxDistance = cameraConst.minDistance;
+        controls.update()
     }
 
-    addEventResize() {
-        window.addEventListener('resize', () => {
-            camera.aspect = innerWidth / innerHeight;
-            this.renderer.setSize(innerWidth, innerHeight);
-            camera.updateProjectionMatrix();
-            this.renderer.render(this.scene, camera);
-        });
+    protected onWindowResize(w?: number, h?: number) {
+        sizes.width = window.innerWidth || w as number
+        sizes.height = window.innerHeight || h as number
+        //update camera
+        this.renderer.setPixelRatio(2)
+        camera.aspect = sizes.width / sizes.height
+        camera.updateProjectionMatrix()
+        this.renderer.setSize(sizes.width, sizes.height)
+        this.renderer.render(this.scene, camera);
+
+    }
+
+    private initGame() {
+        //assets callback
+        //TODO
+        //setTimeout(() => this.resizer(), 100)
+        this.resizer()
+        //load Galaxy
+        new GalaxyApp(this.config as IAppConfig)
     }
 }
 
-new App()
+window.onload = () => {
+    const app = new App()
+}
